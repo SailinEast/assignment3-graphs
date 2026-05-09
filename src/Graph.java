@@ -4,6 +4,11 @@ public class Graph {
     ArrayList<Vertex> vertices = new ArrayList<>();
     HashMap<Integer, ArrayList<Edge>> adjList = new HashMap<>();
     int idGen = 0;
+    boolean silent = true;
+
+    public void setSilent(boolean silent) {
+        this.silent = silent;
+    }
 
     public void addVertex(Vertex v) {
         v.setId(idGen++);
@@ -59,7 +64,7 @@ public class Graph {
         1. Dequeue the vertex id
         2. Get its neighboring nodes' ids
         3. Enqueue these ids if they are not visited and set each id as visited in the process
-        4. Print the vertex id if it's a small graph
+        4. Print the vertex id if silent mode is enabled
      */
     public void bfs(int start) {
         Queue<Integer> destinations = new LinkedList<>();
@@ -72,7 +77,7 @@ public class Graph {
             int toVisit = destinations.poll();
             enqueueIfNotVisited(toVisit, destinations, visited);
 
-            if (vertices.size() <= 10)
+            if (!silent)
                 System.out.println("Visited: " + toVisit);
         }
     }
@@ -81,7 +86,7 @@ public class Graph {
         int[] ids = getNeighbors(currentId);
         visited[currentId] = true;
 
-        if (vertices.size() <= 10)
+        if (!silent)
             System.out.println("Visited: " + currentId);
 
         for (int id : ids) {
@@ -93,7 +98,7 @@ public class Graph {
     Recursion:
         1. Get neighboring nodes' ids
         2. Set the current node as visited
-        3. Print the visited node if it's a small graph
+        3. Print the visited node if silent mode is enabled
         4. If neighboring node is not visited (base case), apply recursion
      */
     public void dfs(int start) {
