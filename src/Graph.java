@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Graph {
     ArrayList<Vertex> vertices = new ArrayList<>();
@@ -65,5 +62,20 @@ public class Graph {
             enqueueIfNotVisited(toVisit, destinations, visited);
             System.out.println("Visited: " + toVisit);
         }
+    }
+
+    private void dfsRecursion(int currentId, boolean[] visited) {
+        int[] ids = getNeighbors(currentId);
+        visited[currentId] = true;
+        System.out.println("Visited: " + currentId);
+
+        for (int id : ids) {
+            if (!visited[id]) dfsRecursion(id, visited);
+        }
+    }
+
+    public void dfs(int start) {
+        boolean[] visited = new boolean[vertices.size()];
+        dfsRecursion(start, visited);
     }
 }
