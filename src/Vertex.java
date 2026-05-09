@@ -1,13 +1,12 @@
 public class Vertex {
-    private static int idGen = 0;
-    private final int id;
-
-    public Vertex() {
-        this.id = idGen++;
-    }
+    private int id;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

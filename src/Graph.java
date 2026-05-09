@@ -3,8 +3,10 @@ import java.util.*;
 public class Graph {
     ArrayList<Vertex> vertices = new ArrayList<>();
     HashMap<Integer, ArrayList<Edge>> adjList = new HashMap<>();
+    int idGen = 0;
 
     public void addVertex(Vertex v) {
+        v.setId(idGen++);
         vertices.add(v);
         adjList.put(v.getId(), new ArrayList<>());
     }
