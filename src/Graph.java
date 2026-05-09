@@ -15,6 +15,17 @@ public class Graph {
         adjList.get(from).add(edge);
     }
 
+    public void addEdge(int from, int to, boolean isDirected) {
+        if (isDirected) {
+            addEdge(from, to);
+        } else {
+            Edge edge = new Edge(vertices.get(from), vertices.get(to));
+            Edge edgeBack = new Edge(vertices.get(to), vertices.get(from));
+            adjList.get(from).add(edge);
+            adjList.get(to).add(edgeBack);
+        }
+    }
+
     public void printGraph() {
         for (Vertex v : vertices) {
             System.out.println("Vertex " + v.getId() + " is connected to: " + adjList.get(v.getId()));
