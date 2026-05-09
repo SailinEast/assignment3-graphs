@@ -6,7 +6,7 @@ public class Graph {
     HashMap<Integer, ArrayList<Edge>> adjList = new HashMap<>();
 
     public void addVertex(Vertex v) {
-        vertices.add(v.getId(), v);
+        vertices.add(v);
         adjList.put(v.getId(), new ArrayList<>());
     }
 
