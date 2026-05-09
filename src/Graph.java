@@ -27,7 +27,8 @@ public class Graph {
 
     public void printGraph() {
         for (Vertex v : vertices) {
-            System.out.println("Vertex " + v.getId() + " is connected to: " + adjList.get(v.getId()));
+            System.out.println("Vertex " + v.getId() +
+                               " is connected to: " + Arrays.toString(getNeighbors(v.getId())));
         }
     }
 
